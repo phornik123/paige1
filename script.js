@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let offsetX = 0;
     let offsetY = 0;
     let zoom = 1;
-    let zoomSpeed = 0.01;  // Increased speed
+    let zoomSpeed = 0.05;  // Increased speed by 5 times
 
     function drawFractal() {
         const width = canvas.width;
@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
             letter.style.color = invertedColor;
         }
 
-        offsetX += 0.01;  // Control the speed of the pan
-        offsetY += 0.01;  // Control the speed of the pan
+        offsetX += 0.05;  // Increased speed
+        offsetY += 0.05;  // Increased speed
         zoom += zoomSpeed;  // Control the zoom speed
 
         // Reverse zoom direction at certain limits to create a continuous effect
