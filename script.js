@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     resizeCanvas();
 
     let offset = 0;
+    let zoom = 1.5;
+    let zoomSpeed = 0.005;
 
     function drawFractal() {
         const width = canvas.width;
@@ -19,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.clearRect(0, 0, width, height);
 
         const maxIterations = 100;
-        const zoom = 1.5;
         const panX = width / 2;
         const panY = height / 2;
 
@@ -40,7 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        offset += 0.05;  // Increased from 0.01 to 0.05 for faster animation
+        offset += 0.05; // Control the speed of the color change
+        zoom += zoomSpeed; // Control the zoom speed
+
+        // Reverse zoom direction at certain limits to create a continuous effect
+        if (zoom > 2 || zoom < 1) {
+            zoomSpeed = -zoomSpeed;
+        }
+
         requestAnimationFrame(drawFractal);
     }
 
