@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let offset = 0;
     let zoom = 1.5;
-    let zoomSpeed = 0.005;
+    let zoomSpeed = 0.01;  // Increased speed
 
     function drawFractal() {
         const width = canvas.width;
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Get the text bounding boxes
+        // Get the text bounding boxes and invert the color
         const letters = textContainer.children;
         for (let letter of letters) {
             const rect = letter.getBoundingClientRect();
@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
             letter.style.color = invertedColor;
         }
 
-        offset += 0.05; // Control the speed of the color change
-        zoom += zoomSpeed; // Control the zoom speed
+        offset += 0.1;  // Increased from 0.05 to 0.1 for faster animation
+        zoom += zoomSpeed;  // Control the zoom speed
 
         // Reverse zoom direction at certain limits to create a continuous effect
         if (zoom > 2 || zoom < 1) {
