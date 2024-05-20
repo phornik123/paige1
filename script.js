@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        offset += 0.01;
+        offset += 0.05;  // Increased from 0.01 to 0.05 for faster animation
         requestAnimationFrame(drawFractal);
     }
 
