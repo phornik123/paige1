@@ -10,23 +10,27 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    let t = 0;
+    let offset = 0;
+
     function drawFractal() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const width = canvas.width;
+        const height = canvas.height;
+
+        ctx.clearRect(0, 0, width, height);
 
         const maxIterations = 100;
         const zoom = 1.5;
-        const panX = canvas.width / 2;
-        const panY = canvas.height / 2;
+        const panX = width / 2;
+        const panY = height / 2;
 
-        for (let x = 0; x < canvas.width; x++) {
-            for (let y = 0; y < canvas.height; y++) {
-                let zx = (x - panX) / (0.5 * zoom * canvas.width);
-                let zy = (y - panY) / (0.5 * zoom * canvas.height);
+        for (let x = 0; x < width; x++) {
+            for (let y = 0; y < height; y++) {
+                let zx = (x - panX) / (0.5 * zoom * width);
+                let zy = (y - panY) / (0.5 * zoom * height);
                 let i = maxIterations;
                 while (zx * zx + zy * zy < 4 && i > 0) {
-                    const xtemp = zx * zx - zy * zy + Math.sin(t) * 0.355534;
-                    zy = 2 * zx * zy + Math.cos(t) * 0.337292;
+                    const xtemp = zx * zx - zy * zy + Math.sin(offset) * 0.355534;
+                    zy = 2 * zx * zy + Math.cos(offset) * 0.337292;
                     zx = xtemp;
                     i--;
                 }
@@ -36,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        t += 0.01;
+        offset += 0.01;
         requestAnimationFrame(drawFractal);
     }
 
