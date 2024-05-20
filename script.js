@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 let zy = (y - height / 2) / (0.5 * zoom * height) + offsetY;
                 let i = maxIterations;
                 while (zx * zx + zy * zy < 4 && i > 0) {
-                    const xtemp = zx * zx - zy * zy + Math.sin(offsetX) * 0.355534;
-                    zy = 2 * zx * zy + Math.cos(offsetY) * 0.337292;
+                    const xtemp = zx * zx - zy * zy + 0.355534;
+                    zy = 2 * zx * zy + 0.337292;
                     zx = xtemp;
                     i--;
                 }
@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
             letter.style.color = invertedColor;
         }
 
-        offsetX += 0.05;  // Increased speed
-        offsetY += 0.05;  // Increased speed
+        offsetX += 0.25;  // Increased speed
+        offsetY += 0.25;  // Increased speed
         zoom += zoomSpeed;  // Control the zoom speed
 
         // Reverse zoom direction at certain limits to create a continuous effect
