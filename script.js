@@ -1,6 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const letters = document.querySelectorAll('.bouncing');
-    letters.forEach((letter, index) => {
-        letter.style.animationDelay = `${index * 0.1}s`;
-    });
+    const canvas = document.getElementById('fractalCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function drawFractal() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const maxIterations = 100;
+        const escapeRadius = 4;
+        const zoom = 1.5;
+        const panX = canvas.width / 2;
+        const panY = canvas.height / 2;
+
+        for (let x = 0; x < canvas.width; x++) {
+            for (let y = 0; y < canvas.height; y++) {
+                let zx = (x - panX) / (0.5 * zoom * canvas.width);
+                let zy = (y - panY) / (0.5 * zoom * canvas.height);
+                let i = maxIterations;
+                while (zx * zx + zy * zy < escapeRadius && i > 0) {
+                    const xtemp = zx * zx - zy * zy + 0.355534;
+                    zy = 2 * zx * zy + 0.337292;
+                    zx = xtemp;
+                    i--;
+                }
+                const color = i === 0 ? 'black' : `hsl(${i / maxIterations * 360}, 100%, 50%)`;
+                ctx.fillStyle = color;
+                ctx.fillRect(x, y, 1, 1);
+            }
+        }
+
+        requestAnimationFrame(drawFractal);
+    }
+
+    drawFractal();
 });
