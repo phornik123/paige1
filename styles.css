@@ -5,7 +5,8 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #000; /* Dark background to enhance flame visibility */
+    background: url('https://your-fractal-background-image-url.jpg') no-repeat center center fixed; /* Replace with your fractal background image URL */
+    background-size: cover;
     overflow: hidden;
 }
 
@@ -32,78 +33,4 @@ body {
     60% {
         transform: translateY(-15px);
     }
-}
-
-/* Flames Effect */
-.flames {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    display: flex;
-    justify-content: space-around;
-    pointer-events: none; /* Ensure flames don't interfere with interactions */
-}
-
-.flame {
-    position: absolute;
-    bottom: 0;
-    width: 30px; /* Increase flame width */
-    height: 300px; /* Increase flame height */
-    background: linear-gradient(to top, rgba(255, 69, 0, 0.9), rgba(255, 69, 0, 0));
-    animation: rise 3s infinite ease-in-out, flicker 0.15s infinite alternate;
-    opacity: 0.8;
-    border-radius: 50%;
-}
-
-.flame:nth-child(odd) {
-    background: linear-gradient(to top, rgba(255, 140, 0, 0.9), rgba(255, 140, 0, 0));
-}
-
-.flame:nth-child(even) {
-    animation-duration: 3.5s;
-}
-
-@keyframes rise {
-    0% {
-        transform: translateY(100vh);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-300px); /* Match flame height */
-        opacity: 0;
-    }
-}
-
-@keyframes flicker {
-    0% {
-        opacity: 0.8;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1.1);
-    }
-}
-
-/* Adding additional layers for depth */
-.flame::before, .flame::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: inherit;
-    animation: inherit;
-    animation-duration: 3s;
-    animation-delay: -1s;
-    mix-blend-mode: screen;
-}
-
-.flame::after {
-    animation-duration: 4s;
-    animation-delay: -2s;
 }
