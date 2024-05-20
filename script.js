@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('fractalCanvas');
     const ctx = canvas.getContext('2d');
+    const textContainer = document.getElementById('textContainer');
 
     function resizeCanvas() {
         canvas.width = window.innerWidth;
@@ -39,6 +40,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.fillStyle = color;
                 ctx.fillRect(x, y, 1, 1);
             }
+        }
+
+        // Get the text bounding boxes
+        const letters = textContainer.children;
+        for (let letter of letters) {
+            const rect = letter.getBoundingClientRect();
+            const x = rect.left + window.scrollX;
+            const y = rect.top + window.scrollY;
+
+            // Get the color of the fractal at this position
+            const pixel = ctx.getImageData(x, y, 1, 1).data;
+            const [r, g, b] = pixel;
+
+            // Invert the color
+            const invertedColor = `rgb(${255 - r}, ${255 - g}, ${255 - b})`;
+            letter.style.color = invertedColor;
         }
 
         offset += 0.05; // Control the speed of the color change
