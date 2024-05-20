@@ -11,10 +11,11 @@ body {
 
 .container {
     display: flex;
-    font-size: 3em;
+    font-size: 5em; /* Increase font size */
     color: #fff;
     z-index: 10;
     position: relative;
+    letter-spacing: 0.2em; /* Add spacing between letters */
 }
 
 .bouncing {
@@ -49,21 +50,21 @@ body {
 .flame {
     position: absolute;
     bottom: 0;
-    width: 20px;
-    height: 300px;
+    width: 50px; /* Increase flame width */
+    height: 500px; /* Increase flame height */
     background: linear-gradient(to top, rgba(255, 69, 0, 0.8), rgba(255, 69, 0, 0.1));
-    animation: rise 2s infinite ease-in-out;
-    opacity: 0.7;
+    animation: rise 3s infinite ease-in-out;
+    opacity: 0.8;
     border-radius: 50%;
 }
 
 .flame:nth-child(even) {
-    animation-duration: 2.5s;
+    animation-duration: 3.5s;
     background: linear-gradient(to top, rgba(255, 140, 0, 0.8), rgba(255, 140, 0, 0.1));
 }
 
 .flame:nth-child(odd) {
-    animation-duration: 3s;
+    animation-duration: 4s;
     background: linear-gradient(to top, rgba(255, 69, 0, 0.8), rgba(255, 69, 0, 0.1));
 }
 
@@ -73,7 +74,7 @@ body {
         opacity: 1;
     }
     100% {
-        transform: translateY(-200px);
+        transform: translateY(-500px); /* Match flame height */
         opacity: 0;
     }
 }
