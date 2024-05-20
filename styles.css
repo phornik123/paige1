@@ -21,7 +21,6 @@ canvas {
 .container {
     display: flex;
     font-size: 5em; /* Increase font size */
-    color: #fff;
     z-index: 10;
     position: relative;
     letter-spacing: 0.2em; /* Add spacing between letters */
