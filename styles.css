@@ -5,9 +5,17 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-    background: url('https://your-fractal-background-image-url.jpg') no-repeat center center fixed; /* Replace with your fractal background image URL */
-    background-size: cover;
+    background: #000; /* Dark background for contrast */
     overflow: hidden;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Make sure the canvas is behind other elements */
 }
 
 .container {
